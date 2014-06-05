@@ -7,3 +7,5 @@ standard-app-packages
 autopublish
 insecure
 less
+font-awesome
+bootstrap3-less
