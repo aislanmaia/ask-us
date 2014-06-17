@@ -1,0 +1,22 @@
+<template name="content_header">
+  <section class="content-header">
+    <h1>
+      {{this.heading}}
+      <small>{{this.subheading}}</small>
+    </h1>
+    {{> breadcrumb preview=this.preview current=this.current}}
+    
+  </section>
+</template>
+
+<template name="breadcrumb">
+  <ol class="breadcrumb">
+      Você está em:
+    {{#if this.preview}}
+      <li><a href="#"><i class="fa fa-dashboard"></i> {{this.preview}}</a></li>
+      <li class="active">{{this.current}}</li>
+    {{else}}
+      <li class="active">{{this.current}}</li>
+    {{/if}}
+  </ol>
+</template>

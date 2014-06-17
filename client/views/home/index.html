@@ -1,0 +1,11 @@
+<template name="home">
+  <!-- Content Header (Page header) -->
+  {{> content_header heading="Dashboard" subheading="Control panel" current="Home"}}
+
+  <!-- Main content -->
+  {{#main_content}}
+    {{> stat_boxes }}
+    <h2 class="page-header">Linha do tempo</h2>
+    {{> timeline }}
+  {{/main_content}}
+</template>

@@ -4,9 +4,9 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
 insecure
 less
 font-awesome
 bootstrap3-less
 ionicons
+iron-router
