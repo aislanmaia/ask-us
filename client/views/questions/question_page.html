@@ -2,6 +2,11 @@
   {{> content_header heading="Pergunta" current="Pergunta"}}
 
   {{#main_content}}
-    {{> question_item }}
+    <div class="question">
+      {{> question_item }}
+    </div>
+    <div class="reply">
+      {{> new_reply }}
+    </div>
   {{/main_content}}
 </template>

@@ -25,3 +25,19 @@ Template.question_item.helpers({
     }
   }
 });
+
+Template.question_item.events({
+  "click .question-reply a": function (event, template) {
+    event.preventDefault();
+
+    var textarea_reply = $(".reply").find('[name=reply-content]');
+    scrollTo($(".reply"), 1000);
+    textarea_reply.focus();
+  }
+});
+
+function scrollTo(element, speed) {
+  $(document.body).animate({
+    'scrollTop': element.offset().top
+  }, speed);
+}
