@@ -4,6 +4,9 @@ Accounts.onCreateUser(function (options, user) {
       profile;
 
   result = Meteor.http.get("https://api.github.com/user", {
+    headers: {
+      "User-Agent": "Meteor AskUs"
+    },
     params: {
       access_token: accessToken
     }
