@@ -2,16 +2,11 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "font-awesome": {},
       "bootstrap3-less": {},
-      "ionicons": {}
+      "ionicons": {},
+      "font-awesome-4.1.0": {}
     },
     "packages": {
-      "font-awesome": {
-        "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
-        "tag": "v4.1.0",
-        "commit": "ce6b1e92715d1938babc5d69c655c17e387f5926"
-      },
       "bootstrap3-less": {
         "git": "https://github.com/eprochasson/bootstrap3-less",
         "tag": "v0.1.9",
@@ -21,6 +16,11 @@
         "git": "https://github.com/Pagebakers/meteor-ionicons.git",
         "tag": "v1.4.1",
         "commit": "c3c07eba87d42ef900c9c61323ce4499bdce3204"
+      },
+      "font-awesome-4.1.0": {
+        "git": "https://github.com/miguelvalverde/font-awesome-4.1.0.git",
+        "tag": "v0.0.1",
+        "commit": "2a84395252f4bee953878baa87b7a8bdc172a34c"
       }
     }
   }

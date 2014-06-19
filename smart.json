@@ -1,7 +1,7 @@
 {
   "packages": {
-    "font-awesome": {},
     "bootstrap3-less": {},
-    "ionicons": {}
+    "ionicons": {},
+    "font-awesome-4.1.0": {}
   }
 }
