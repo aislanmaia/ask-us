@@ -9,32 +9,43 @@
     <p>{{text}}</p>
   </div>
 
-  <div class="question-actions pull-left">
-    <div class="question-follow">
-      <a href="#">
-        <i class="fa fa-eye fa-2x"></i>
-        <span>
-          <b>Seguir pergunta</b>
-        </span>
-      </a>
+  <div class="row">
+    <div class="question-actions ">
+
+      <div class="col-sm-3">
+        <div class="question-follow">
+          <a href="#">
+            <i class="fa fa-eye fa-2x"></i>
+            <span>
+              <b>Seguir esta pergunta!</b>
+            </span>
+          </a>
+        </div>
+        <p>101 pessoas seguindo esta pergunta</p>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="question-reply">
+          <a href="#">
+            <i class="fa fa-reply fa-2x"></i>
+            <span>
+              <b>Responder</b>
+            </span>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <div class="question-reply">
-      <a href="#">
-        <i class="fa fa-reply fa-2x"></i>
-        <span>
-          <b>Responder</b>
-        </span>
-      </a>
+    <div class="col-sm-6">
+      <div class="question-info pull-right ">
+        <p>perguntada {{submittedText}} atrás</p>
+        <div class="pull-left image">
+          <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+          <!--<b>Nome do usuário</b>-->
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="question-info pull-right ">
-    <p>perguntada {{submittedText}} atrás</p>
-    <div class="pull-left image">
-      <img src="img/avatar3.png" class="img-circle" alt="User Image" />
-      <!--<b>Nome do usuário</b>-->
-    </div>
   </div>
 
 </template>

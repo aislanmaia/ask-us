@@ -33,7 +33,29 @@ Template.question_item.events({
     var textarea_reply = $(".reply").find('[name=reply-content]');
     scrollTo($(".reply"), 1000);
     textarea_reply.focus();
-  }
+  },
+
+  "click .question-follow a": function (event, template) {
+    event.preventDefault();
+
+    template.find('div.question-follow').className = "question-unfollow";
+    template.find('.fa-eye').className = "fa fa-eye-slash fa-2x";
+    $('div.question-unfollow > a > span > b').html("Deixar de seguir esta pergunta!");
+
+    //$(event.target).closest('a').css({
+      //"pointer-events": "none",
+      //"cursor": "default"
+    //});
+  },
+
+  "click .question-unfollow a": function (event, template) {
+     event.preventDefault();
+
+     template.find('div.question-unfollow').className = "question-follow";
+     template.find('.fa-eye-slash').className = "fa fa-eye fa-2x";
+     $('div.question-follow > a > span > b').html("Seguir esta pergunta!");
+
+   }
 });
 
 function scrollTo(element, speed) {
