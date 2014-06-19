@@ -10,3 +10,6 @@ bootstrap3-less
 ionicons
 iron-router
 font-awesome-4.1.0
+accounts-base
+accounts-ui-bootstrap-3
+accounts-password

@@ -4,7 +4,8 @@
     "basePackages": {
       "bootstrap3-less": {},
       "ionicons": {},
-      "font-awesome-4.1.0": {}
+      "font-awesome-4.1.0": {},
+      "accounts-ui-bootstrap-3": {}
     },
     "packages": {
       "bootstrap3-less": {
@@ -21,6 +22,11 @@
         "git": "https://github.com/miguelvalverde/font-awesome-4.1.0.git",
         "tag": "v0.0.1",
         "commit": "2a84395252f4bee953878baa87b7a8bdc172a34c"
+      },
+      "accounts-ui-bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
+        "tag": "v0.3.0-1",
+        "commit": "93ffa5d0e325dc7026de89f6d90c178fa04bdd3a"
       }
     }
   }
