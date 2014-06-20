@@ -2,6 +2,13 @@
 
   {{#main_content heading="Perguntas" current="Perguntas"}}
     <div class="row">
+      <ul class="nav nav-pills nav-justified">
+        <li class="active"><a href="{{pathFor 'questions_list'}}">Minhas Perguntas</a></li>
+        <li><a href="{{pathFor 'questions_list_followed'}}">Perguntas seguidas</a></li>
+      </ul>
+    </div>
+
+    <div class="row top30">
       {{#each questions}}
         {{> question_preview }}
       {{/each}}
@@ -14,7 +21,7 @@
     <div class="box box-info">
       <div class="box-header">
         <h3 class="box-title">
-          {{title}}
+          <a href="{{pathFor 'question_page' _id}}">{{title}}</a>
         </h3>
         <div class="box-tools pull-right">
           <div class="label bg-aqua">
@@ -26,6 +33,9 @@
         <p>{{truncateText text}} &hellip;</p>
       </div>
       <div class="box-footer">
+        <div class="box-tools pull-right">
+          <a href="{{pathFor 'question_page' _id}}">Visualizar</a>
+        </div>
         <div class="user-panel">
           <div class="pull-left image">
             <img class="img-square" src="{{currentUser.profile.avatar_url}}" alt="{{currentUser.profile.name}}" />
