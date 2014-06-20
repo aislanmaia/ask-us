@@ -21,4 +21,20 @@ Router.map(function () {
       return Questions.findOne(this.params._id);
     }
   });
+
+  this.route('questions_list', {
+    path: '/questions/',
+    layoutTemplate: 'layout',
+    waitOn: function () {
+      return [
+        Meteor.subscribe('user_questions', Meteor.userId()),
+        Meteor.subscribe('questions_followed', Meteor.userId())
+      ];
+    },
+    data: function () {
+      return {
+        questions: Questions.find({author_id: Meteor.userId()}).fetch()
+      };
+    }
+  });
 });

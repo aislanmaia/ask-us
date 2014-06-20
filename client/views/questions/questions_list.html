@@ -1,0 +1,37 @@
+<template name="questions_list">
+
+  {{#main_content heading="Perguntas" current="Perguntas"}}
+    <div class="row">
+      {{#each questions}}
+        {{> question_preview }}
+      {{/each}}
+    </div>
+  {{/main_content}}
+</template>
+
+<template name="question_preview">
+  <div class="col-md-4">
+    <div class="box box-info">
+      <div class="box-header">
+        <h3 class="box-title">
+          {{title}}
+        </h3>
+        <div class="box-tools pull-right">
+          <div class="label bg-aqua">
+            Label
+          </div>
+        </div>
+      </div>
+      <div class="box-body">
+        <p>{{truncateText text}} &hellip;</p>
+      </div>
+      <div class="box-footer">
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img class="img-square" src="{{currentUser.profile.avatar_url}}" alt="{{currentUser.profile.name}}" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

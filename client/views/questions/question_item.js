@@ -42,6 +42,18 @@ Template.question_item.events({
     template.find('.fa-eye').className = "fa fa-eye-slash fa-2x";
     $('div.question-unfollow > a > span > b').html("Deixar de seguir esta pergunta!");
 
+    var question_follow = {
+      question_id: event.currentTarget.id,
+      user_id: Meteor.userId()
+    };
+
+    Meteor.call('question_follow', question_follow, function (err, id) {
+      if (err) {
+        alert("Houve um erro ao tentar seguir a pergunta! Por favor, tente novamente!");
+        console.log("Erro: "+err.reason);
+      }
+    });
+
     //$(event.target).closest('a').css({
       //"pointer-events": "none",
       //"cursor": "default"
