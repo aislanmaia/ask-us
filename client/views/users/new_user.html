@@ -1,0 +1,39 @@
+<template name="new_user">
+
+    <div class="form-box" id="login-box">
+      <div class="header">Register Novo Membro</div>
+      <form>
+        <div class="body bg-gray">
+          <div class="form-group">
+            <input type="text" name="email" class="form-control" placeholder="Email"/>
+          </div>
+          <div class="form-group">
+            <input type="text" name="fullname" class="form-control" placeholder="Nome completo"/>
+          </div>
+          <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="Usuário"/>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Senha"/>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password2" class="form-control" placeholder="Redigite a senha"/>
+          </div>
+        </div>
+        <div class="footer">
+          <button type="submit" class="btn bg-olive btn-block">Cadastre-me!</button>
+          <a href="{{pathFor 'login'}}" class="text-center">Eu sou já sou cadastrado.</a>
+        </div>
+      </form>
+
+      <div class="margin text-center">
+        <span>Entrar utilizando redes sociais</span>
+        <br/>
+        <button class="btn bg-black btn-circle"><i class="fa fa-github"></i></button>
+        <!--<button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>-->
+        <!--<button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>-->
+        <!--<button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>-->
+      </div>
+    </div>
+
+</template>

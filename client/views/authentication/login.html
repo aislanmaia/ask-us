@@ -1,0 +1,34 @@
+<template name="login">
+  <div class="form-box" id="login-box">
+    <div class="header">Entrar</div>
+    <form>
+      <div class="body bg-gray">
+        <div class="form-group">
+          <input type="text" name="username" class="form-control" placeholder="Usuário"/>
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" class="form-control" placeholder="Senha"/>
+        </div>
+        <!--<div class="form-group">-->
+          <!--<input type="checkbox" name="remember_me"/> Remember me-->
+        <!--</div>-->
+      </div>
+      <div class="footer">
+        <button type="submit" class="btn bg-olive btn-block">Entrar</button>
+
+        <!--<p><a href="#">I forgot my password</a></p>-->
+
+        <a href="{{pathFor 'new_user' }}" class="text-center">Ainda não é cadastrado? Clique aqui e cadastre-se!</a>
+      </div>
+    </form>
+
+    <div class="margin text-center">
+      <span>Entrar utilizando redes sociais</span>
+      <br/>
+      <button id="login-with-github" class="btn bg-black btn-circle"><i class="fa fa-github"></i></button>
+        <!--<button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>-->
+        <!--<button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>-->
+        <!--<button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>-->
+    </div>
+  </div>
+</template>
