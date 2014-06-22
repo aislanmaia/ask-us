@@ -12,7 +12,11 @@ Meteor.methods({
   question: function (attributes) {
     var question = _.extend(_.pick(attributes, 'title', 'text'), {
       submitted: new Date().getTime(),
-      author_id: Meteor.userId()
+      author: {
+        _id: Meteor.userId(),
+        name: Meteor.user().profile.name,
+        avatar_url: Meteor.user().profile.avatar_url
+      }
     });
 
     questionId = Questions.insert(question);

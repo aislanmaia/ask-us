@@ -13,14 +13,27 @@
     <div class="question-actions ">
 
       <div class="col-sm-3">
-        <div class="question-follow">
-          <a id="{{_id}}" href="#">
-            <i class="fa fa-eye fa-2x"></i>
-            <span>
-              <b>Seguir esta pergunta!</b>
-            </span>
-          </a>
-        </div>
+        {{#unless ownQuestion}}
+          {{#unless following}}
+            <div class="question-follow">
+              <a id="{{_id}}" href="#">
+                <i class="fa fa-eye fa-2x"></i>
+                <span>
+                  <b>Seguir esta pergunta!</b>
+                </span>
+              </a>
+            </div>
+          {{else}}
+            <div class="question-unfollow">
+              <a id="{{_id}}" href="#">
+                <i class="fa fa-eye-slash fa-2x"></i>
+                <span>
+                  <b>Deixar de seguir esta pergunta!</b>
+                </span>
+              </a>
+            </div>
+          {{/unless}}
+        {{/unless}}
         <p>101 pessoas seguindo esta pergunta</p>
       </div>
 
@@ -40,8 +53,8 @@
       <div class="question-info pull-right ">
         <p>perguntada {{submittedText}} atrás</p>
         <div class="pull-left image">
-          <img src="img/avatar3.png" class="img-circle" alt="User Image" />
-          <!--<b>Nome do usuário</b>-->
+          <img src="{{author.avatar_url}}" class="img-square" alt="User Image" />
+          <b>{{author.name}}</b>
         </div>
       </div>
     </div>

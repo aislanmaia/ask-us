@@ -23,6 +23,14 @@ Template.question_item.helpers({
         return new Date(difference_hour).getHours() + " hora ";
       }
     }
+  },
+
+  ownQuestion: function () {
+    return this.author._id === Meteor.userId();
+  },
+
+  following: function () {
+    return QuestionsFollowed.isFollowing(this._id, Meteor.userId());
   }
 });
 
@@ -66,6 +74,16 @@ Template.question_item.events({
      template.find('div.question-unfollow').className = "question-follow";
      template.find('.fa-eye-slash').className = "fa fa-eye fa-2x";
      $('div.question-follow > a > span > b').html("Seguir esta pergunta!");
+     alert(template.data._id);
+
+     Meteor.call('question_unfollow', template.data._id, function (err, id) {
+       if (err) {
+         alert("Houve um erro ao tentar deixar de seguir a pergunta! Por favor, tente novamente!");
+         console.log("Erro: "+err.reason);
+       } else {
+         alert("Deu certo!");
+       }
+     });
 
    }
 });

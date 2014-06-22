@@ -5,7 +5,9 @@ Meteor.publish('question', function (id) {
 });
 
 Meteor.publish('user_questions', function (user_id) {
-  return Questions.find({author_id: user_id});
+  return Questions.find({
+    "author._id": user_id
+  });
 });
 
 Meteor.publish('searched_questions', function (query) {
@@ -15,4 +17,8 @@ Meteor.publish('searched_questions', function (query) {
       { text: { $regex: query, $options: 'i' } }
     ]
   });
+});
+
+Meteor.publish('questions_followed', function (question_ids) {
+  return Questions.find({_id: { $in: question_ids }});
 });

@@ -2,7 +2,9 @@
 
   {{#main_content heading="Pergunta" current="Pergunta"}}
     <div class="question">
-      {{> question_item }}
+      {{#with question}}
+        {{> question_item }}
+      {{/with}}
     </div>
     <div class="reply">
       {{> new_reply }}

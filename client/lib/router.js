@@ -70,7 +70,7 @@ Router.map(function () {
     },
     data: function () {
       return {
-        questions: Questions.find({author_id: Meteor.userId()})
+        questions: Questions.find({"author._id": Meteor.userId()})
       };
     }
   });
@@ -80,12 +80,14 @@ Router.map(function () {
     template: 'questions_list',
     waitOn: function () {
       return [
-        Meteor.subscribe('questions_followed', Meteor.userId())
+        Meteor.subscribe('user_questions_followed', Meteor.userId()),
+        Meteor.subscribe('questions_followed', QuestionsFollowed.questionIds(Meteor.userId()))
       ];
     },
     data: function () {
       return {
-        questions: QuestionsFollowed.find({user_id: Meteor.userId()})
+        user_questions_followed: QuestionsFollowed.find({user_id: Meteor.userId()}),
+        questions: Questions.find()
       };
     }
   });
@@ -95,12 +97,12 @@ Router.map(function () {
     waitOn: function () {
       return [
         Meteor.subscribe('searched_questions', Session.get('query')),
-        Meteor.subscribe('authors', Questions.authorIds())
+        //Meteor.subscribe('authors', Questions.authorIds())
       ];
     },
     data: function () {
       return {
-        questions: Questions.find(),
+        questions: Questions.find({}, {sort:{_id: -1}}),
         //authors: Meteor.users.find()
       };
     }
@@ -116,10 +118,13 @@ Router.map(function () {
     waitOn: function () {
       return [
         Meteor.subscribe('question', this.params._id)
+        //Meteor.subscribe('author', this.params._id)
       ];
     },
     data: function () {
-      return Questions.findOne(this.params._id);
+      return {
+        question: Questions.findOne(this.params._id)
+      };
     }
   });
 

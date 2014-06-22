@@ -3,8 +3,8 @@
   {{#main_content heading="Perguntas" current="Perguntas"}}
     <div class="row">
       <ul class="nav nav-pills nav-justified">
-        <li class="active"><a href="{{pathFor 'questions_list'}}">Minhas Perguntas</a></li>
-        <li><a href="{{pathFor 'questions_list_followed'}}">Perguntas seguidas</a></li>
+        <li id="user_questions" class="active"><a href="{{pathFor 'questions_list'}}">Minhas Perguntas</a></li>
+        <li id="questions_followed"><a href="{{pathFor 'questions_list_followed'}}">Perguntas seguidas</a></li>
       </ul>
     </div>
 
@@ -38,7 +38,8 @@
         </div>
         <div class="user-panel">
           <div class="pull-left image">
-            <img class="img-square" src="{{avatar_url author_id}}" alt="{{currentUser.profile.name}}" />
+            <!--<img class="img-square" src="{{avatar_url author_id}}" alt="{{currentUser.profile.name}}" />-->
+            <img class="img-square" src="{{author.avatar_url}}" alt="{{currentUser.profile.name}}" />
           </div>
         </div>
       </div>
