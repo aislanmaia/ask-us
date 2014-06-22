@@ -1,5 +1,7 @@
 <template name="main_content">
-  {{> content_header heading=this.heading current=this.current}}
+  {{#if this.heading}}
+    {{> content_header heading=this.heading current=this.current}}
+  {{/if}}
 
   <section class="content">
     {{> UI.contentBlock}}

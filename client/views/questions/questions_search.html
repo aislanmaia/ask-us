@@ -1,0 +1,18 @@
+<template name="questions_search">
+  {{#main_content heading="Perguntas" current="Perguntas"}}
+
+    <h3>
+      {{#if questions}}
+        Sua pesquisa retornou {{pluralize count_results 'resultado' }}.
+      {{else}}
+        Sua pesquisa não retornou resultados.
+      {{/if}}
+    </h3>
+
+    <div class="row top30">
+      {{#each questions}}
+        {{> question_preview }}
+      {{/each}}
+    </div>
+  {{/main_content}}
+</template>

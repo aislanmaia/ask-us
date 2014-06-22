@@ -90,6 +90,22 @@ Router.map(function () {
     }
   });
 
+  this.route('questions_search', {
+    path: '/search',
+    waitOn: function () {
+      return [
+        Meteor.subscribe('searched_questions', Session.get('query')),
+        Meteor.subscribe('authors', Questions.authorIds())
+      ];
+    },
+    data: function () {
+      return {
+        questions: Questions.find(),
+        //authors: Meteor.users.find()
+      };
+    }
+  });
+
   this.route('new_user', {
     path: 'users/new',
     layoutTemplate: 'layout_authentication'
