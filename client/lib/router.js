@@ -118,13 +118,15 @@ Router.map(function () {
     waitOn: function () {
       return [
         Meteor.subscribe('question', this.params._id),
-        Meteor.subscribe('user_is_following_question', this.params._id, Meteor.userId())
+        Meteor.subscribe('user_is_following_question', this.params._id, Meteor.userId()),
+        Meteor.subscribe('question_replies', this.params._id)
         //Meteor.subscribe('author', this.params._id)
       ];
     },
     data: function () {
       return {
-        question: Questions.findOne(this.params._id)
+        question: Questions.findOne(this.params._id),
+        replies: Replies.find()
       };
     }
   });

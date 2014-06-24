@@ -7,12 +7,12 @@ Template.new_question.events({
       text: $(event.target).find('[name=question-content]').val()
     };
 
-    Meteor.call('question', question, function (error, id) {
+    Meteor.call('insertQuestion', question, function (error, id) {
       if(!error){
         Router.go('question_page', {_id: id});
       } else {
-        alert("Houve um erro!");
-        console.log(error);
+        alert("Houve um erro ao tentar salvar sua pergunta! Por favor, tente novamente!");
+        console.log(error.reason);
       }
     });
   }

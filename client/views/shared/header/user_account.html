@@ -1,8 +1,6 @@
 <template name="user_account">
   {{#if currentUser }}
     {{> user_loggedin}}
-  {{else}}
-    {{> user_loggedout}}
   {{/if}}
 </template>
 
@@ -52,6 +50,3 @@
   </li>
 </template>
 
-<template name="user_loggedout">
-  <li><a id="login">Login com Github</a></li>
-</template>

@@ -9,7 +9,7 @@ Questions.authorIds = function () {
 };
 
 Meteor.methods({
-  question: function (attributes) {
+  insertQuestion: function (attributes) {
     var question = _.extend(_.pick(attributes, 'title', 'text'), {
       submitted: new Date().getTime(),
       author: {

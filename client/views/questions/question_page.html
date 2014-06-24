@@ -6,8 +6,19 @@
         {{> question_item }}
       {{/with}}
     </div>
-    <div class="reply">
-      {{> new_reply }}
+    <div class="replies">
+      <div class="replies-info">
+        <h3>{{replies_count}}</h3>
+        <hr />
+      </div>
+      {{#each replies}}
+        {{> reply}}
+      {{/each}}
+    </div>
+    <div class="new-reply">
+      {{#with question}}
+        {{> new_reply }}
+      {{/with}}
     </div>
   {{/main_content}}
 </template>
