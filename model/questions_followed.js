@@ -10,7 +10,12 @@ QuestionsFollowed.questionIds = function (user_id) {
 };
 
 QuestionsFollowed.isFollowing = function (question_id, user_id) {
-  return this.find({ question_id: question_id, user_id: user_id });
+  return this.find({
+    $and: [
+      { question_id: question_id },
+      { user_id: user_id }
+    ]
+  });
 };
 
 Meteor.methods({

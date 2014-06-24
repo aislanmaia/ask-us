@@ -117,7 +117,8 @@ Router.map(function () {
     path: '/questions/:_id',
     waitOn: function () {
       return [
-        Meteor.subscribe('question', this.params._id)
+        Meteor.subscribe('question', this.params._id),
+        Meteor.subscribe('user_is_following_question', this.params._id, Meteor.userId())
         //Meteor.subscribe('author', this.params._id)
       ];
     },

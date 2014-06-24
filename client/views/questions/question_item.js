@@ -30,7 +30,8 @@ Template.question_item.helpers({
   },
 
   following: function () {
-    return QuestionsFollowed.isFollowing(this._id, Meteor.userId());
+    // fetch() registers dependencies on the matching documents.
+    return QuestionsFollowed.find().fetch();
   }
 });
 
@@ -46,9 +47,9 @@ Template.question_item.events({
   "click .question-follow a": function (event, template) {
     event.preventDefault();
 
-    template.find('div.question-follow').className = "question-unfollow";
-    template.find('.fa-eye').className = "fa fa-eye-slash fa-2x";
-    $('div.question-unfollow > a > span > b').html("Deixar de seguir esta pergunta!");
+    //template.find('div.question-follow').className = "question-unfollow";
+    //template.find('.fa-eye').className = "fa fa-eye-slash fa-2x";
+    //$('div.question-unfollow > a > span > b').html("Deixar de seguir esta pergunta!");
 
     var question_follow = {
       question_id: event.currentTarget.id,
@@ -61,35 +62,31 @@ Template.question_item.events({
         console.log("Erro: "+err.reason);
       }
     });
-
-    //$(event.target).closest('a').css({
-      //"pointer-events": "none",
-      //"cursor": "default"
-    //});
   },
 
   "click .question-unfollow a": function (event, template) {
      event.preventDefault();
 
-     template.find('div.question-unfollow').className = "question-follow";
-     template.find('.fa-eye-slash').className = "fa fa-eye fa-2x";
-     $('div.question-follow > a > span > b').html("Seguir esta pergunta!");
-     alert(template.data._id);
+     //template.find('div.question-unfollow').className = "question-follow";
+     //template.find('.fa-eye-slash').className = "fa fa-eye fa-2x";
+     //$('div.question-follow > a > span > b').html("Seguir esta pergunta!");
 
      Meteor.call('question_unfollow', template.data._id, function (err, id) {
        if (err) {
          alert("Houve um erro ao tentar deixar de seguir a pergunta! Por favor, tente novamente!");
          console.log("Erro: "+err.reason);
-       } else {
-         alert("Deu certo!");
        }
      });
-
    }
 });
+
+Template.question_item.destroyed = function () {
+  Session.set('isFollowing', undefined);
+};
 
 function scrollTo(element, speed) {
   $(document.body).animate({
     'scrollTop': element.offset().top
   }, speed);
 }
+
