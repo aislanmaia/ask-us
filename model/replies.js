@@ -26,5 +26,8 @@ Meteor.methods({
     replyId = Replies.update({_id: attributes._id}, {$set: reply});
 
     return replyId;
+  },
+  removeReply: function (reply_id) {
+    var replyId = Replies.remove({_id: reply_id});
   }
 });
