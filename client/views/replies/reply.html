@@ -1,16 +1,63 @@
 <template name="reply">
-  <div class="reply">
-    <div class="reply-content">
-      {{text}}
-      <hr />
+
+  <div id="{{_id}}" class="reply">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-1">
+          <div class="reply-approve">
+            <a id="{{_id}}" href="#">
+              <i class="fa fa-thumbs-o-up fa-3x"></i>
+            </a>
+            <span data-toggle="tooltip" data-placement="bottom" title="Número de aprovações desta resposta"><b>10</b></span>
+          </div>
+        </div>
+
+        <div class="col-md-11">
+          <div class="reply-content">
+            {{text}}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row top30">
+
+        {{#if ownReply}}
+          <div class="reply-actions">
+            <div class="col-md-3">
+              <div class="reply-edit">
+                <a id="{{_id}}" href="#">
+                  <i class="fa fa-edit fa-2x"></i>
+                  <span><b>Editar resposta</b></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="reply-remove">
+                <a id="{{_id}}" href="#">
+                  <i class="fa fa-trash-o fa-2x"></i>
+                  <span><b>Excluir resposta</b></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+
+        <div class="col-md-3 col-md-offset-9">
+          <div class="reply-info pull-right">
+            <p>respondida 2 horas atrás</p>
+            <div class="pull-left image">
+              <img src="{{author.avatar_url}}" class="img-square" alt="User Image" />
+              <b>{{author.name}}</b>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="reply-actions">
-      
-    </div>
-
-    <div class="reply-info">
-      
-    </div>
+    <hr />
   </div>
 </template>

@@ -5,6 +5,7 @@ Meteor.methods({
     var user = Meteor.user();
     var reply = _.extend(_.pick(attributes, 'question_id', 'text'), {
       submitted: new Date().getTime(),
+      updated_at: undefined,
       author: {
         _id: user._id,
         name: user.profile.name,
@@ -13,6 +14,16 @@ Meteor.methods({
     });
 
     replyId = Replies.insert(reply);
+
+    return replyId;
+  },
+  updateReply: function (attributes) {
+    var reply = _.extend(_.pick(attributes, 'text'), {
+      updated_at: new Date().getTime()
+    });
+    //console.log(reply._id);
+
+    replyId = Replies.update({_id: attributes._id}, {$set: reply});
 
     return replyId;
   }

@@ -38,10 +38,11 @@ Template.question_item.helpers({
 Template.question_item.events({
   "click .question-reply a": function (event, template) {
     event.preventDefault();
+    Session.set('editing', undefined);
 
-    var textarea_reply = $(".reply").find('[name=reply-content]');
-    scrollTo($(".reply"), 1000);
-    textarea_reply.focus();
+    var textarea_reply = $(".new-reply").find('[name=reply-content]');
+    scrollTo($(".reply"), 500);
+    textarea_reply.focus().val('');
   },
 
   "click .question-follow a": function (event, template) {
