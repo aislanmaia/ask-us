@@ -108,8 +108,22 @@ Router.map(function () {
     }
   });
 
+  this.route('replies_list', {
+    path: '/replies',
+    waitOn: function () {
+      return [
+        Meteor.subscribe('user_replies', Meteor.userId())
+      ];
+    },
+    data: function () {
+      return {
+        replies: Replies.find()
+      };
+    }
+  });
+
   this.route('new_user', {
-    path: 'users/new',
+    path: '/users/new',
     layoutTemplate: 'layout_authentication'
   });
 

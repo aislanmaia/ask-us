@@ -16,7 +16,8 @@ Template.reply_submit.events({
 
     var attributes = {
       text: template.find('[name=reply-content]').value,
-      question_id: template.data._id
+      question_id: template.data._id,
+      question_title: template.data.title
     };
 
     if (!Session.get('editing')) {

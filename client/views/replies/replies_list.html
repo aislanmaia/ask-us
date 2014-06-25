@@ -1,0 +1,40 @@
+<template name="replies_list">
+  {{#main_content heading="Respostas" current="Respostas"}}
+    <div class="row">
+      <ul class="nav nav-pills nav-justified">
+        <li id="user_replies" class="active"><a href="{{pathFor 'replies_list'}}">Minhas Respostas</a></li>
+        <li id="replies_by_others"><a href="#">Respostas de outros</a></li>
+      </ul>
+    </div>
+
+    <div class="row top30">
+      {{#each replies}}
+        <div class="row">
+          <div class="col-md-12">
+            {{> replies_preview }}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/main_content}}
+</template>
+
+<template name="replies_preview">
+  <div class="reply-preview">
+    <ul class="timeline">
+      <li>
+        <div class="timeline-item">
+          <span class="time"><i class="fa fa-clock-o"></i> 12:04</span>
+          <h3 class="timeline-header"><a href="{{pathFor 'question_page' _id=question_id}}">{{question_title}}</a></h3>
+          <div class="timeline-body">
+            {{truncateText text}}
+          </div>
+          <div class="timeline-footer">
+            <a class="btn btn-primary btn-xs" href="{{pathFor 'question_page' _id=question_id}}">Leia mais</a>
+            <a class="btn btn-danger btn-xs" href="#">Excluir</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>

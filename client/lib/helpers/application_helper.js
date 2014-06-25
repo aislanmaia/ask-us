@@ -6,6 +6,10 @@ UI.registerHelper('pluralize', function(n, thing) {
   }
 });
 
+UI.registerHelper('truncateText', function (text) {
+  return text.trunc(125, true);
+});
+
 scrollTo = function (element, speed) {
   $(document.body).animate({
     'scrollTop': element.offset().top

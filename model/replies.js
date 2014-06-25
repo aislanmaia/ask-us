@@ -3,7 +3,7 @@ Replies = new Meteor.Collection('replies');
 Meteor.methods({
   insertReply: function (attributes) {
     var user = Meteor.user();
-    var reply = _.extend(_.pick(attributes, 'question_id', 'text'), {
+    var reply = _.extend(_.pick(attributes, 'question_id', 'question_title', 'text'), {
       submitted: new Date().getTime(),
       updated_at: undefined,
       author: {

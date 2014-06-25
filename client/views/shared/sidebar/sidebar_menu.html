@@ -1,29 +1,29 @@
 <template name="sidebar_menu">
-  
+
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
 
-    <li class="active">
+    <li class="active home">
       <a href="index.html">
         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
       </a>
     </li>
 
-    <li>
+    <li class="my-questions">
       <a href="{{pathFor 'questions_list'}}">
         <i class="fa fa-question"></i> <span>Minhas Perguntas</span>
         <small class="badge pull-right bg-blue">3</small>
       </a>
     </li>
 
-    <li>
-      <a href="#">
+    <li class="my-replies">
+      <a href="{{pathFor 'replies_list'}}">
         <i class="fa fa-reply-all"></i> <span>Minhas respostas</span>
         <small class="badge pull-right bg-green">12</small>
       </a>
     </li>
 
-    <li>
+    <li class="my-messages">
       <a href="#">
         <i class="fa fa-envelope"></i> <span>Mensagens</span>
         <small class="badge pull-right bg-yellow">12</small>
