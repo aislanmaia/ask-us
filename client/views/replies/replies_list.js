@@ -1,12 +1,7 @@
-Template.reply.events({
-  "click .reply-edit": function (event, template) {
-    event.preventDefault();
+Template.replies_preview.events({
+  "click .read-more": function (event, template) {
 
-    var text = template.data.text;
-
-    scrollTo($('.reply'), 1000);
-    $('[name=reply-content]').val(text).focus();
-    Session.set('editing', template.data._id);
+    Session.set('view_reply', template.data._id);
   },
 
   "click .reply-remove": function (event, template) {
@@ -37,10 +32,17 @@ Template.reply.events({
       }
     });
   }
+
 });
 
-Template.reply.helpers({
-  ownReply: function () {
-    return this.author._id === Meteor.userId();
+Template.replies_list.events({
+  "click #user_replies": function (event, template) {
+    $("#user_replies").addClass('active');
+    $("#replies_by_others").removeClass('active');
+  },
+
+  "click #replies_by_others": function (event, template) {
+    $("#replies_by_others").addClass('active');
+    $("#user_replies").removeClass('active');
   }
 });

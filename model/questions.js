@@ -8,6 +8,14 @@ Questions.authorIds = function () {
   return authorIds;
 };
 
+Questions.questionIds = function () {
+  var questionIds = this.find({}).map(function (q) {
+    return q._id;
+  });
+
+  return questionIds;
+};
+
 Meteor.methods({
   insertQuestion: function (attributes) {
     var question = _.extend(_.pick(attributes, 'title', 'text'), {

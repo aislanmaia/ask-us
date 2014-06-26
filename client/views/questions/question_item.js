@@ -1,3 +1,15 @@
+Template.question_item.rendered = function () {
+  var reply_id = Session.get('view_reply');
+  if (reply_id) {
+    var reply_div = $('#'+reply_id);
+    scrollTo(reply_div, 500);
+    Session.set('view_reply', undefined);
+
+    reply_div.effect("highlight", {color: "#78AB46"}, 500);
+
+  }
+};
+
 Template.question_item.helpers({
   submittedText: function () {
     var now = new Date();
@@ -41,7 +53,7 @@ Template.question_item.events({
     Session.set('editing', undefined);
 
     var textarea_reply = $(".new-reply").find('[name=reply-content]');
-    scrollTo($(".reply"), 500);
+    scrollTo(textarea_reply, 500);
     textarea_reply.focus().val('');
   },
 

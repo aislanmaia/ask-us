@@ -3,6 +3,7 @@
     "bootstrap3-less": {},
     "ionicons": {},
     "font-awesome-4.1.0": {},
-    "accounts-ui-bootstrap-3": {}
+    "accounts-ui-bootstrap-3": {},
+    "jquery-ui": {}
   }
 }

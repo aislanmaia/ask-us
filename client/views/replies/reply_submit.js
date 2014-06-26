@@ -21,10 +21,12 @@ Template.reply_submit.events({
     };
 
     if (!Session.get('editing')) {
-      Meteor.call('insertReply', attributes, function (err, id) {
+      Meteor.call('insertReply', attributes, function (error, id) {
         if(error){
           alert("Houve um erro ao tentar salvar sua resposta! Por favor, tente novamente!");
-          console.log(err.reason);
+          console.log(error.reason);
+        } else {
+          scrollTo($('#'+id), 1000);
         }
       });
     }else {

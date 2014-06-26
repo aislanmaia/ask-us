@@ -10,8 +10,13 @@ UI.registerHelper('truncateText', function (text) {
   return text.trunc(125, true);
 });
 
+UI.registerHelper('current_user_own_item', function (item_author_id) {
+  return item_author_id === Meteor.userId();
+});
+
 scrollTo = function (element, speed) {
   $(document.body).animate({
     'scrollTop': element.offset().top
   }, speed);
 };
+

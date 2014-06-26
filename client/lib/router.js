@@ -117,7 +117,24 @@ Router.map(function () {
     },
     data: function () {
       return {
-        replies: Replies.find()
+        replies: Replies.find({}, {sort: {submitted: -1}})
+      };
+    }
+  });
+
+  this.route('replies_list_from_others', {
+    path: '/replies/others',
+    template: 'replies_list',
+    waitOn: function () {
+      var user_id = Meteor.userId();
+      return [
+        Meteor.subscribe('user_questions', user_id),
+        Meteor.subscribe('replies_in_questions', Questions.questionIds(), user_id)
+      ];
+    },
+    data: function () {
+      return {
+        replies: Replies.find({}, {sort: { submitted: -1 }})
       };
     }
   });
