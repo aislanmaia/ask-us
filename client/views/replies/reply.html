@@ -6,10 +6,12 @@
 
         <div class="col-md-1">
           <div class="reply-approve">
-            <a id="{{_id}}" href="#">
+            <a id="{{_id}}" href="#" class="{{approvesClass}}">
               <i class="fa fa-thumbs-o-up fa-3x"></i>
             </a>
-            <span data-toggle="tooltip" data-placement="bottom" title="Número de aprovações desta resposta"><b>10</b></span>
+            <span data-toggle="tooltip" data-placement="bottom" title="Número de aprovações desta resposta">
+              <p><b>{{numberApprobations}}</b></p>
+            </span>
           </div>
         </div>
 

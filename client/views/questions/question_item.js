@@ -5,7 +5,7 @@ Template.question_item.rendered = function () {
     scrollTo(reply_div, 500);
     Session.set('view_reply', undefined);
 
-    reply_div.effect("highlight", {color: "#78AB46"}, 500);
+    reply_div.effect("highlight", {color: "#78AB46"}, 1000);
 
   }
 };

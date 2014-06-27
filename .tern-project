@@ -1,0 +1,16 @@
+{
+  "libs": [
+    "browser",
+    "jquery",
+    "underscore"
+  ],
+  "loadEagerly": ["*.js", "/*.js", "*/*/*.js", "*/*/*/*.js"],
+  "dontLoad": [ ".meteor" ],
+  "async": true,
+  "plugins": {
+    "meteor": {},
+    "requirejs": {},
+    "doc_comment": {},
+    "component": {}
+  }
+}

@@ -1,4 +1,12 @@
 Template.reply.events({
+  "click .approvable": function (event, template) {
+    Meteor.call('approbation', template.data._id, function (error, id) {
+      if (error) {
+        alert("Não foi possível aprovar a resposta neste momento. Tente novamente em instantes.");
+        console.log(error.reason);
+      }
+    });
+  },
   "click .reply-edit": function (event, template) {
     event.preventDefault();
 
@@ -42,5 +50,16 @@ Template.reply.events({
 Template.reply.helpers({
   ownReply: function () {
     return this.author._id === Meteor.userId();
+  },
+  approvesClass: function () {
+    var user_id = Meteor.userId();
+    if (!(_.include(this.approvers, user_id) || this.author._id === user_id)) {
+      return 'approvable';
+    } else {
+      return 'disabled';
+    }
+  },
+  numberApprobations: function () {
+    return this.approbations;
   }
 });

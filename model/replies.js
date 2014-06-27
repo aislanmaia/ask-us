@@ -10,7 +10,9 @@ Meteor.methods({
         _id: user._id,
         name: user.profile.name,
         avatar_url: user.profile.avatar_url
-      }
+      },
+      approvers: [],
+      approbations: 0
     });
 
     replyId = Replies.insert(reply);
@@ -29,5 +31,19 @@ Meteor.methods({
   },
   removeReply: function (reply_id) {
     var replyId = Replies.remove({_id: reply_id});
+  },
+  approbation: function (reply_id) {
+    var user = Meteor.user();
+
+    var replyId = Replies.update({
+      _id: reply_id,
+      approvers: { $ne: user._id },
+      "author._id": { $ne: user._id }
+    }, {
+      $addToSet: { approvers: user._id },
+      $inc: { approbations: 1 }
+    });
+
+    return replyId;
   }
 });
