@@ -37,13 +37,13 @@ Template.question_item.helpers({
     }
   },
 
-  ownQuestion: function () {
-    return this.author._id === Meteor.userId();
+  ownQuestion: function (author_id) {
+    return author_id === Meteor.userId();
   },
 
-  following: function () {
+  following: function (question_id, user_id) {
     // fetch() registers dependencies on the matching documents.
-    return QuestionsFollowed.find().fetch();
+    return QuestionsFollowed.isFollowing(question_id, user_id).fetch();
   }
 });
 
@@ -79,12 +79,11 @@ Template.question_item.events({
 
   "click .question-unfollow a": function (event, template) {
      event.preventDefault();
-
      //template.find('div.question-unfollow').className = "question-follow";
      //template.find('.fa-eye-slash').className = "fa fa-eye fa-2x";
      //$('div.question-follow > a > span > b').html("Seguir esta pergunta!");
 
-     Meteor.call('question_unfollow', template.data._id, function (err, id) {
+     Meteor.call('question_unfollow', template.data.question._id, function (err, id) {
        if (err) {
          alert("Houve um erro ao tentar deixar de seguir a pergunta! Por favor, tente novamente!");
          console.log("Erro: "+err.reason);

@@ -30,7 +30,8 @@ Meteor.methods({
   },
 
   question_unfollow: function (question_id) {
-    follow_id = QuestionsFollowed.remove({question_id: question_id});
+    var user = Meteor.user();
+    follow_id = QuestionsFollowed.remove({$and: [ {question_id: question_id}, {user_id: user._id} ]});
 
     return follow_id;
   }

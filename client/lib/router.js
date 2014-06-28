@@ -147,17 +147,20 @@ Router.map(function () {
   this.route('question_page', {
     path: '/questions/:_id',
     waitOn: function () {
+      var question_id = this.params._id;
       return [
-        Meteor.subscribe('question', this.params._id),
-        Meteor.subscribe('user_is_following_question', this.params._id, Meteor.userId()),
-        Meteor.subscribe('question_replies', this.params._id)
+        Meteor.subscribe('question', question_id),
+        Meteor.subscribe('user_is_following_question', question_id, Meteor.userId()),
+        Meteor.subscribe('all_followed_from_question', question_id),
+        Meteor.subscribe('question_replies', question_id)
         //Meteor.subscribe('author', this.params._id)
       ];
     },
     data: function () {
       return {
         question: Questions.findOne(this.params._id),
-        replies: Replies.find()
+        replies: Replies.find(),
+        numberFollowed: QuestionsFollowed.find().count()
       };
     }
   });

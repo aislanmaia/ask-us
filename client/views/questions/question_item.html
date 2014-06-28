@@ -1,22 +1,22 @@
 <template name="question_item">
 
   <div class="question-title">
-    <h2>{{title}}</h2>
+    <h2>{{question.title}}</h2>
     <hr />
   </div>
 
   <div class="question-content">
-    <p>{{text}}</p>
+    <p>{{question.text}}</p>
   </div>
 
   <div class="row top30">
     <div class="question-actions ">
 
       <div class="col-sm-3">
-        {{#unless ownQuestion}}
-          {{#unless following}}
+        {{#unless ownQuestion author._id}}
+          {{#unless following question._id currentUser._id}}
             <div class="question-follow">
-              <a id="{{_id}}" href="#">
+              <a id="{{question._id}}" href="#">
                 <i class="fa fa-eye fa-2x"></i>
                 <span>
                   <b>Seguir esta pergunta!</b>
@@ -25,7 +25,7 @@
             </div>
           {{else}}
             <div class="question-unfollow">
-              <a id="{{_id}}" href="#">
+              <a id="{{question._id}}" href="#">
                 <i class="fa fa-eye-slash fa-2x"></i>
                 <span>
                   <b>Deixar de seguir esta pergunta!</b>
@@ -34,7 +34,7 @@
             </div>
           {{/unless}}
         {{/unless}}
-        <p>101 pessoas seguindo esta pergunta</p>
+        <p>{{numberFollowed}} pessoa(s) seguindo esta pergunta</p>
       </div>
 
       <div class="col-sm-3">
