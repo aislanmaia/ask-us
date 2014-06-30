@@ -1,15 +1,3 @@
-Template.question_item.rendered = function () {
-  var reply_id = Session.get('view_reply');
-  if (reply_id) {
-    var reply_div = $('#'+reply_id);
-    scrollTo(reply_div, 500);
-    Session.set('view_reply', undefined);
-
-    reply_div.effect("highlight", {color: "#78AB46"}, 1000);
-
-  }
-};
-
 Template.question_item.helpers({
   submittedText: function () {
     var now = new Date();
@@ -73,6 +61,8 @@ Template.question_item.events({
       if (err) {
         alert("Houve um erro ao tentar seguir a pergunta! Por favor, tente novamente!");
         console.log("Erro: "+err.reason);
+      } else {
+        Meteor.call('increment_count_questions', Meteor.userId());
       }
     });
   },
@@ -87,6 +77,8 @@ Template.question_item.events({
        if (err) {
          alert("Houve um erro ao tentar deixar de seguir a pergunta! Por favor, tente novamente!");
          console.log("Erro: "+err.reason);
+       } else {
+         Meteor.call('decrement_count_questions', Meteor.userId());
        }
      });
    }
@@ -96,9 +88,10 @@ Template.question_item.destroyed = function () {
   Session.set('isFollowing', undefined);
 };
 
-function scrollTo(element, speed) {
-  $(document.body).animate({
-    'scrollTop': element.offset().top
-  }, speed);
-}
+//function scrollTo(element, speed) {
+  //alert(element);
+  //$(document.body).animate({
+    //'scrollTop': element.offset().top
+  //}, speed);
+//}
 

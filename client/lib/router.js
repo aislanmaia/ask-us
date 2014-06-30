@@ -21,6 +21,13 @@ var BeforeHooks = {
       }
     }
   },
+  notifications: function () {
+    // add notifications here
+    Meteor.subscribe('notifications', Meteor.userId());
+  },
+  user: function () {
+    Meteor.subscribe('user', Meteor.userId());
+  }
 };
 
 var hooks = {
@@ -42,6 +49,8 @@ Router.onBeforeAction(BeforeHooks.isLoggedIn, {except: [
   'new_user',
   'login'
 ]});
+Router.onBeforeAction(BeforeHooks.notifications, {except: ['new_user', 'login']});
+Router.onBeforeAction(BeforeHooks.user, {except: ['new_user', 'login']});
 Router.onBeforeAction(BeforeHooks.guestOnly, {only: [
   'login',
   'new_user'

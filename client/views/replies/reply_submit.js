@@ -17,7 +17,8 @@ Template.reply_submit.events({
     var attributes = {
       text: template.find('[name=reply-content]').value,
       question_id: template.data._id,
-      question_title: template.data.title
+      question_title: template.data.title,
+      receiver_id: template.data.author._id
     };
 
     if (!Session.get('editing')) {
@@ -26,6 +27,10 @@ Template.reply_submit.events({
           alert("Houve um erro ao tentar salvar sua resposta! Por favor, tente novamente!");
           console.log(error.reason);
         } else {
+          var users_id = [];
+          users_id.push(Meteor.userId());
+          users_id.push(template.data.author._id);
+          Meteor.call('increment_count_replies', users_id);
           scrollTo($('#'+id), 1000);
         }
       });

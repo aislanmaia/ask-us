@@ -1,3 +1,15 @@
+Template.reply.rendered = function () {
+  var reply_id = Session.get('view_reply');
+  if (reply_id) {
+    var reply_div = $("#"+ reply_id);
+    scrollTo(reply_div, 500);
+    Session.set('view_reply', undefined);
+
+    reply_div.effect("highlight", {color: "#78AB46"}, 1000);
+
+  }
+};
+
 Template.reply.events({
   "click .approvable": function (event, template) {
     Meteor.call('approbation', template.data._id, function (error, id) {
@@ -12,14 +24,13 @@ Template.reply.events({
 
     var text = template.data.text;
 
-    scrollTo($('.reply'), 1000);
+    scrollTo($('.reply'), 500);
     $('[name=reply-content]').val(text).focus();
     Session.set('editing', template.data._id);
   },
 
   "click .reply-remove": function (event, template) {
     event.preventDefault();
-
     bootbox.dialog({
       message: "Você tem certeza que quer excluir esta resposta?",
       buttons: {
@@ -31,6 +42,11 @@ Template.reply.events({
               if (error) {
                 alert("Não foi possível excluir a resposta neste momento. Tente novamente em instantes.");
                 console.log(error.reason);
+              } else {
+                var users_id = [], author_question_id = event.currentTarget.className.split(" ")[1];
+                users_id.push(template.data.author._id);
+                users_id.push(author_question_id);
+                Meteor.call('decrement_count_replies', users_id);
               }
             });
           }
@@ -61,5 +77,8 @@ Template.reply.helpers({
   },
   numberApprobations: function () {
     return this.approbations;
+  },
+  question: function () {
+    return Questions.findOne();
   }
 });

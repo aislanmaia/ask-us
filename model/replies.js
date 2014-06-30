@@ -1,5 +1,18 @@
 Replies = new Meteor.Collection('replies');
 
+Replies.replyNotification = function (reply, receiver_id) {
+  var attributes = {
+    type: "reply",
+    content: {
+      _id: reply._id,
+      author_id: Meteor.userId()
+    },
+    submitted: reply.submitted,
+    user_id: receiver_id
+  };
+  Meteor.call('createNotification', attributes);
+};
+
 Meteor.methods({
   insertReply: function (attributes) {
     var user = Meteor.user();
@@ -16,6 +29,10 @@ Meteor.methods({
     });
 
     replyId = Replies.insert(reply);
+
+    if (replyId) {
+      Replies.replyNotification(reply, attributes.receiver_id);
+    }
 
     return replyId;
   },

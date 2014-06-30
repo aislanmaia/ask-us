@@ -28,6 +28,12 @@ Template.new_user.events({
         password: password,
         profile: {
           name: name
+        },
+        questions: {
+          count: 0
+        },
+        replies: {
+          count: 0
         }
       }, function (error) {
         if (error) {

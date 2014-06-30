@@ -30,10 +30,17 @@ Accounts.onCreateUser(function (options, user) {
       "html_url");
 
     user.profile = profile;
+
   } else {
     user.profile = options.profile;
   }
 
+  user.questions = {
+    count: 0
+  };
+  user.replies = {
+    count: 0
+  };
   return user;
 });
 

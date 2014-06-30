@@ -12,14 +12,14 @@
     <li class="my-questions">
       <a href="{{pathFor 'questions_list'}}">
         <i class="fa fa-question"></i> <span>Minhas Perguntas</span>
-        <small class="badge pull-right bg-blue">3</small>
+        <small class="badge pull-right bg-blue">{{currentUser.questions.count}}</small>
       </a>
     </li>
 
     <li class="my-replies">
       <a href="{{pathFor 'replies_list'}}">
         <i class="fa fa-reply-all"></i> <span>Minhas respostas</span>
-        <small class="badge pull-right bg-green">12</small>
+        <small class="badge pull-right bg-green">{{currentUser.replies.count}}</small>
       </a>
     </li>
 
