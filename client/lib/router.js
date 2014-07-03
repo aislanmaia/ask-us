@@ -63,7 +63,15 @@ Router.map(function () {
   });
 
   this.route('home', {
-    path: '/'
+    path: '/',
+    waitOn: function () {
+      return [
+        Meteor.subscribe('user_questions', Meteor.userId()),
+        Meteor.subscribe('all_follows_question_from_others', Questions.questionIds()),
+        Meteor.subscribe('replies_in_questions', Questions.questionIds(), Meteor.userId()),
+        Meteor.subscribe('user_replies', Meteor.userId())
+      ];
+    }
   });
 
   this.route('new_question', {

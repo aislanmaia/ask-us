@@ -9,6 +9,15 @@ QuestionsFollowed.questionIds = function (user_id) {
   return questionIds;
 };
 
+//QuestionsFollowed.userIds = function (question_id) {
+  //var userIds = this.find({
+    //question_id: question_id}).map(function (q) {
+      //return q.user_id;
+    //});
+
+  //return userIds;
+//};
+
 QuestionsFollowed.isFollowing = function (question_id, user_id) {
   return this.find({
     $and: [
