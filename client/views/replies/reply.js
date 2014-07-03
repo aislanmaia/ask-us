@@ -12,7 +12,14 @@ Template.reply.rendered = function () {
 
 Template.reply.events({
   "click .approvable": function (event, template) {
-    Meteor.call('approbation', template.data._id, function (error, id) {
+
+    var attributes = {
+      _id: template.data._id,
+      question_id: template.data.question_id,
+      author_id: template.data.author._id
+    };
+
+    Meteor.call('approbation', attributes, function (error, id) {
       if (error) {
         alert("Não foi possível aprovar a resposta neste momento. Tente novamente em instantes.");
         console.log(error.reason);

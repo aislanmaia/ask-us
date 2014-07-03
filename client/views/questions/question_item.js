@@ -54,7 +54,8 @@ Template.question_item.events({
 
     var question_follow = {
       question_id: event.currentTarget.id,
-      user_id: Meteor.userId()
+      user_id: Meteor.userId(),
+      question: template.data.question
     };
 
     Meteor.call('question_follow', question_follow, function (err, id) {

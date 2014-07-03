@@ -1,0 +1,14 @@
+<template name="reply_notification_item">
+  <li><!-- start message -->
+    <a href="{{pathFor 'question_page' _id=this.content.questionId}}">
+      <div class="pull-left">
+        <img src="{{this.content.author_avatar_url}}" class="img-circle" alt="User Image"/>
+      </div>
+      <h4 class="notification-author-name">
+        {{this.content.author_name}} <span>respondeu a:</span>
+        <small><i class="fa fa-clock-o"></i>{{time_on_it_submitted}}</small>
+      </h4>
+      <p>{{this.content.question_title}}</p>
+    </a>
+  </li><!-- end message -->
+</template>
