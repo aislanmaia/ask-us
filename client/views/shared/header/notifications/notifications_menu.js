@@ -23,6 +23,17 @@ Template.notifications_menu.helpers({
       return "fa-thumbs-up";
     }
 
+  },
+  labelTypeClass: function () {
+    if (this.type === "reply") {
+      return "label-success";
+    }
+    if (this.type === "follow_question") {
+      return "label-warning";
+    }
+    if (this.type === "approbation") {
+      return "label-danger";
+    }
   }
 
 });
